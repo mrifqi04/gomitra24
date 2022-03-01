@@ -23,5 +23,5 @@ func main() {
 	// v1.POST("register", authController.Register)
 	// v1.POST("login", authController.Login)
 
-	r.Run(":3000")
+	r.Run()
 }
