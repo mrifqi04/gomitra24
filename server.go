@@ -1,15 +1,19 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"mitra24/controller"
+
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
 	r := gin.Default()
+	v1 := r.Group("api/v1/")
 
-	r.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "Hello World",
-		})
-	})
+	v1.GET("/", controller.Ping)
 
-	r.Run()
+	v1.POST("login", controller.Login)
+	v1.POST("register", controller.Register)
+
+	r.Run(":3000")
 }
