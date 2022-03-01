@@ -7,7 +7,7 @@ RUN go get -d -v ./...
 RUN go build -o /go/bin/app -v ./...
 
 #final stage
-FROM alpine:latest
+FROM golang:latest
 RUN apk --no-cache add ca-certificates
 COPY --from=builder /go/bin/app /app
 ENTRYPOINT /app
